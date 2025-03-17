@@ -1,54 +1,58 @@
-# React + TypeScript + Vite
+### FRONTEND DRENVIO (REACT + VITE)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Programa creado en React para el uso de la api que obtiene los precios especiales de cada producto por usuario.
 
-Currently, two official plugins are available:
+## ¿Como instalar?
+#### Localmente:
+1. Clonar el respositorio desde: https://github.com/Jassonesteban/frontend-react-drenvio.git
+2. Abrir la carpeta del proyecto clonado en VSCODE y ejecutar **npm install* para instalar las dependencias y node_modules.
+3. Para ejecutar el proyecto corremos la terminal integrada y ponemos el siguiente comando: **npm run dev** para subir el proyecto.
+4. el proyecto correra en la url: http://localhost:5173/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### En la nube:
+1. Ingresar a la url en VERCEL: https://frontend-react-drenvio.vercel.app/home
 
-## Expanding the ESLint configuration
+## Especificaciones Técnicas de la Aplicación en React
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. Descripción General
+La aplicación es una Single Page Application (SPA) desarrollada con React.js, desplegada en Vercel, y se comunica con una API en Node.js con MongoDB para gestionar datos.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+2. Tecnologías Utilizadas
+   
+**Frontend**: React.js con Vite o Create React App.
+**Backend**: Node.js con Express y MongoDB.
+**Despliegue**: Vercel (Frontend).
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+3. Arquitectura del Proyecto
+Component-Based Architecture: La aplicación está dividida en componentes reutilizables.
+State Management: Uso de useState y Context API para manejar estados globales.
+Routing: Uso de React Router para manejar las rutas y navegación.
+HTTP Requests: Uso de fetch o Axios para consumir la API en Node.js.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+4. Estructura de Carpetas
+src/
+├── components/ → Componentes reutilizables.
+├── pages/ → Páginas principales (Home, Login, Dashboard, etc.).
+├── context/ → Context API para manejo de estado global.
+├── services/ → Funciones para interactuar con la API.
+├── utils/ → Funciones auxiliares (formatos, validaciones, etc.).
+├── routes/ → Definición de rutas con React Router.
+├── styles/ → Archivos CSS o Tailwind para estilos.
+├── App.js → Punto de entrada principal.
+├── index.js → Renderiza la aplicación en el DOM.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+6. Funcionalidades Principales
+   
+* Búsquedas Predictivas: Implementadas en inputs para usuarios y productos.
+* CRUD: Gestión de productos y precios especiales.
+* Consumo de API: Comunicación con el backend en Node.js.
+* Manejo de Errores: Validaciones con Joi en backend y frontend.
+* Despliegue: Deploy en Vercel con integración continua desde GitHub.
+
+7. Justificación de Tecnologías
+React.js: Permite construir interfaces interactivas con reactividad.
+React Router: Maneja la navegación sin recargar la página.
+Context API: Evita el prop drilling y facilita la gestión del estado global.
+Fetch: Para hacer solicitudes HTTP a la API.
+Tailwind CSS: Para estilos rápidos y personalizados.
+Vercel: Facilita el despliegue y hosting con integración continua.
