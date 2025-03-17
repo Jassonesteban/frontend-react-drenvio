@@ -4,9 +4,10 @@ import { Product } from "../interfaces/Product";
 interface ProductCardProps {
   product: Product;
   specialPrice?: number | null;
+  onViewMore:() => void;
 }
 
-const ProductCard: React.FC<ProductCardProps> = ({ product, specialPrice }) => {
+const ProductCard: React.FC<ProductCardProps> = ({ product, specialPrice, onViewMore }) => {
   const hasSpecialPrice =
     specialPrice !== null &&
     specialPrice !== undefined &&
@@ -58,7 +59,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, specialPrice }) => {
           </span>
         ))}
       </div>
-      <button className="mt-4 w-full bg-black hover:bg-gray-700 text-white py-2 rounded-lg font-semibold transition-all">
+      <button onClick={onViewMore} className="mt-4 w-full bg-black hover:bg-gray-700 text-white py-2 rounded-lg font-semibold transition-all">
         Ver más
       </button>
     </div>

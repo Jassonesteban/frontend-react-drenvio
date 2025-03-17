@@ -1,17 +1,15 @@
 import { useState } from "react";
 import SearchUser from "./SearchUser";
-import SearchProduct from "./SearchProduct";
 import { createSpecialPrice } from "../services/specialPrice";
+import { useProducts } from "../store/ProductContext";
 
 interface SpecialPriceModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const SpecialPriceModal: React.FC<SpecialPriceModalProps> = ({
-  isOpen,
-  onClose,
-}) => {
+const SpecialPriceModal: React.FC<SpecialPriceModalProps> = ({ isOpen, onClose }) => {
+  const { products } = useProducts();
   const [formData, setFormData] = useState({
     userId: "",
     productId: "",
@@ -25,17 +23,12 @@ const SpecialPriceModal: React.FC<SpecialPriceModalProps> = ({
     setFormData({ ...formData, userId });
   };
 
-  const handleProductSelect = (productId: string) => {
-    setFormData({ ...formData, productId });
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Datos enviados: ", formData);
     setError("");
 
     try {
@@ -74,23 +67,30 @@ const SpecialPriceModal: React.FC<SpecialPriceModalProps> = ({
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-gray-700 font-medium mb-3">
-              Usuario
-            </label>
+            <label className="block text-gray-700 font-medium mb-3">Usuario</label>
             <SearchUser onSelectUser={handleUserSelect} />
           </div>
 
           <div>
-            <label className="block text-gray-700 font-medium mb-3">
-              Producto
-            </label>
-            <SearchProduct onSelectProduct={handleProductSelect} />
+            <label className="block text-gray-700 font-medium mb-3">Producto</label>
+            <select
+              name="productId"
+              value={formData.productId}
+              onChange={handleChange}
+              className="w-full p-2 px-4 border border-gray-300 rounded-lg focus:ring focus:ring-indigo-300"
+              required
+            >
+              <option value="">Seleccionar producto</option>
+              {products.map((product) => (
+                <option key={product._id} value={product._id}>
+                  {product.name}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div>
-            <label className="block text-gray-700 font-medium mb-3">
-              Precio especial
-            </label>
+            <label className="block text-gray-700 font-medium mb-3">Precio especial</label>
             <input
               type="number"
               name="specialPrice"

@@ -1,10 +1,13 @@
 import AppRoutes from "./routes";
+import { ProductProvider } from "./store/ProductContext";
 import { UserProvider } from "./store/UserContext";
 
 function App() {
   return (
     <UserProvider>
-      <AppRoutes />
+      <ProductProvider>
+        <AppRoutes />
+      </ProductProvider>
     </UserProvider>
   );
 }
