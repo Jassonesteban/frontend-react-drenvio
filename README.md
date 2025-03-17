@@ -12,6 +12,8 @@ Programa creado en React para el uso de la api que obtiene los precios especiale
 #### En la nube:
 1. Ingresar a la url en VERCEL: https://frontend-react-drenvio.vercel.app/home
 
+####Nota: Para obtener la información de los productos, primero hay que ejecutar la API de los precios especiales, puede descargarse de aqui: https://github.com/Jassonesteban/api-special-price-node
+
 ## Especificaciones Técnicas de la Aplicación en React
 
 1. Descripción General
